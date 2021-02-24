@@ -1,0 +1,83 @@
+﻿@model IEnumerable<GestaoBiblioteca.Entities.Emprestimo.ViewModels.EmprestimoDisplayViewModel>
+
+@{
+    ViewBag.Title = "Empréstimos";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LivroNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuncionarioNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PessoaNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEmprestimo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataMaxEmprestimo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDevolucao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmprestimoSituacao)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LivroNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PessoaNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEmprestimo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataMaxEmprestimo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDevolucao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmprestimoSituacao)
+            </td>
+            <td>
+                <button class="btn btn-primary btn-devolver" data-id="@item.Id"></button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+        $(document).ready(function () {
+            $(".btn-devolver").click(function () {
+                let _id = $(this).data('id');
+                $.post("@Url.Action("DevolverEmprestimo")", { id: _id }).done(function () {
+                    window.location.href = "@Url.Action("Index")";
+                });
+            });
+        });
+</script>
+}
