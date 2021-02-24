@@ -1,6 +1,6 @@
 # Gestão Biblioteca 
 
-**Gestão Biblioteca ** é um ASP.NET MVC para estudos.
+** Gestão Biblioteca ** é um ASP.NET MVC para estudos.
 
 ## Guia
 
@@ -57,3 +57,6 @@ Isso criará o banco de dados, aplicará as migrações do Entity Framework
 
 * As strings de configuração especificam a instância do SQL Server LocalDB como o servidor de banco de dados de destino: `Data Source=(localdb)\MSSQLLocalDB`. Os desenvolvedores que usam um banco de dados de destino diferente terão que alterar as cadeias de conexão em ambos os projetos.
 
+## TODO
+
+Dados para contato no cadastro de pessoas não implementado ainda.
